@@ -1,0 +1,74 @@
+@import './variables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Text color utilities */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Heading utilities */
+.h1 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.h2 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.h3 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.h4 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Body text */
+.body {
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.body-small {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

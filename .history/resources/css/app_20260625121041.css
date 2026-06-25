@@ -1,0 +1,14 @@
+/* Design System */
+@import './variables.css';
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles (if needed) */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
