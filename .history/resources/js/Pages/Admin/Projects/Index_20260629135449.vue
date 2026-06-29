@@ -1,7 +1,7 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-import Button from "@/Components/UI/Button.vue";
+import { Link } from '@inertiajs/vue3';
+import AdminLayout from '@/Layouts/AdminLayout.vue';
+import Button from '@/Components/UI/Button.vue';
 
 defineProps({
     projects: Array,
@@ -20,17 +20,14 @@ defineProps({
                     >
                         Projects Management
                     </h2>
-                    <p
-                        style="
-                            color: var(--color-text-secondary);
-                            margin-top: 4px;
-                        "
-                    >
+                    <p style="color: var(--color-text-secondary); margin-top: 4px;">
                         Manage your portfolio projects
                     </p>
                 </div>
                 <Link :href="route('admin.projects.create')">
-                    <Button variant="primary"> + New Project </Button>
+                    <Button variant="primary">
+                        + New Project
+                    </Button>
                 </Link>
             </div>
 
@@ -44,13 +41,11 @@ defineProps({
                 "
             >
                 <!-- Empty State -->
-                <div v-if="projects.length === 0" class="p-8 text-center">
-                    <p
-                        style="
-                            color: var(--color-text-secondary);
-                            margin-bottom: 16px;
-                        "
-                    >
+                <div
+                    v-if="projects.length === 0"
+                    class="p-8 text-center"
+                >
+                    <p style="color: var(--color-text-secondary); margin-bottom: 16px;">
                         No projects yet. Create your first project!
                     </p>
                     <Link :href="route('admin.projects.create')">
@@ -109,8 +104,7 @@ defineProps({
                             v-for="project in projects"
                             :key="project.id"
                             style="
-                                border-bottom: 1px solid
-                                    rgba(148, 163, 184, 0.1);
+                                border-bottom: 1px solid rgba(148, 163, 184, 0.1);
                             "
                         >
                             <!-- Title -->
@@ -125,9 +119,7 @@ defineProps({
                                     class="text-xs mt-1"
                                     style="color: var(--color-text-secondary)"
                                 >
-                                    {{
-                                        project.description?.substring(0, 50)
-                                    }}...
+                                    {{ project.description?.substring(0, 50) }}...
                                 </p>
                             </td>
 
@@ -135,10 +127,7 @@ defineProps({
                             <td class="px-6 py-4 text-sm">
                                 <div class="flex flex-wrap gap-1">
                                     <span
-                                        v-for="tech in project.tech_stack?.slice(
-                                            0,
-                                            3,
-                                        )"
+                                        v-for="tech in project.tech_stack?.slice(0, 3)"
                                         :key="tech"
                                         class="px-2 py-1 rounded text-xs"
                                         style="
@@ -152,12 +141,7 @@ defineProps({
                                         v-if="project.tech_stack?.length > 3"
                                         class="px-2 py-1 rounded text-xs"
                                         style="
-                                            background: rgba(
-                                                148,
-                                                163,
-                                                184,
-                                                0.1
-                                            );
+                                            background: rgba(148, 163, 184, 0.1);
                                             color: var(--color-text-secondary);
                                         "
                                     >
@@ -195,27 +179,13 @@ defineProps({
                                 class="px-6 py-4 text-sm"
                                 style="color: var(--color-text-secondary)"
                             >
-                                {{
-                                    new Date(
-                                        project.created_at,
-                                    ).toLocaleDateString()
-                                }}
+                                {{ new Date(project.created_at).toLocaleDateString() }}
                             </td>
 
                             <!-- Actions -->
                             <td class="px-6 py-4 text-sm">
                                 <div class="flex justify-center gap-2">
-                                    <a
-                                        :href="route('admin.projects.show', project.id)"
-                                        class="px-3 py-1 rounded text-xs font-medium transition-colors"
-                                        style="
-                                            background: rgba(56, 189, 248, 0.1);
-                                            color: var(--color-accent);
-                                        "
-                                    >
-                                        View
-                                    </a>
-                                    <a
+                                    <Link
                                         :href="route('admin.projects.edit', project.id)"
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
                                         style="
@@ -224,7 +194,7 @@ defineProps({
                                         "
                                     >
                                         Edit
-                                    </a>
+                                    </Link>
                                     <button
                                         @click="deleteProject(project.id)"
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
@@ -243,15 +213,8 @@ defineProps({
             </div>
 
             <!-- Total Projects -->
-            <div
-                class="mt-6 text-sm"
-                style="color: var(--color-text-secondary)"
-            >
-                Total Projects:
-                <span
-                    style="color: var(--color-text-primary); font-weight: 600;"
-                    >{{ projects.length }}</span
-                >
+            <div class="mt-6 text-sm" style="color: var(--color-text-secondary)">
+                Total Projects: <span style="color: var(--color-text-primary); font-semibold;">{{ projects.length }}</span>
             </div>
         </div>
     </AdminLayout>
@@ -261,14 +224,12 @@ defineProps({
 export default {
     methods: {
         deleteProject(projectId) {
-            if (confirm("Are you sure you want to delete this project?")) {
-                this.$inertia.delete(
-                    route("admin.projects.destroy", projectId),
-                );
+            if (confirm('Are you sure you want to delete this project?')) {
+                this.$inertia.delete(route('admin.projects.destroy', projectId));
             }
-        },
-    },
-};
+        }
+    }
+}
 </script>
 
 <style scoped>

@@ -202,7 +202,7 @@ defineProps({
                                 }}
                             </td>
 
-                            <!-- Actions -->
+                           <!-- Actions -->
                             <td class="px-6 py-4 text-sm">
                                 <div class="flex justify-center gap-2">
                                     <a

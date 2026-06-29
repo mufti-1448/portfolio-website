@@ -202,10 +202,10 @@ defineProps({
                                 }}
                             </td>
 
-                            <!-- Actions -->
+                           <!-- Actions -->
                             <td class="px-6 py-4 text-sm">
                                 <div class="flex justify-center gap-2">
-                                    <a
+                                    
                                         :href="route('admin.projects.show', project.id)"
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
                                         style="
@@ -215,7 +215,7 @@ defineProps({
                                     >
                                         View
                                     </a>
-                                    <a
+                                    
                                         :href="route('admin.projects.edit', project.id)"
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
                                         style="

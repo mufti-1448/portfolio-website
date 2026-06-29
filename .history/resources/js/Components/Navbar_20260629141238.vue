@@ -48,7 +48,7 @@ const toggleMobileMenu = () => {
                             class="text-lg font-semibold hidden sm:inline"
                             style="color: var(--color-text-primary);"
                         >
-                            Ali
+                            Al
                         </span>
                     </Link>
                 </div>

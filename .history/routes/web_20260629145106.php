@@ -39,7 +39,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         ],
         'parameters' => ['project' => 'project'],
     ])->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
-    
     Route::resource('skills', SkillController::class, [
         'names' => [
             'index' => 'admin.skills.index',

@@ -42,7 +42,7 @@ const toggleMobileMenu = () => {
                             class="text-2xl font-bold"
                             style="color: var(--color-accent);"
                         >
-                            &lt;/&gt; Ali
+                            &lt;/&gt; ALI
                         </span>
                         <span
                             class="text-lg font-semibold hidden sm:inline"

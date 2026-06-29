@@ -202,41 +202,41 @@ defineProps({
                                 }}
                             </td>
 
-                            <!-- Actions -->
-                            <td class="px-6 py-4 text-sm">
-                                <div class="flex justify-center gap-2">
-                                    <a
-                                        :href="route('admin.projects.show', project.id)"
-                                        class="px-3 py-1 rounded text-xs font-medium transition-colors"
-                                        style="
-                                            background: rgba(56, 189, 248, 0.1);
-                                            color: var(--color-accent);
-                                        "
-                                    >
-                                        View
-                                    </a>
-                                    <a
-                                        :href="route('admin.projects.edit', project.id)"
-                                        class="px-3 py-1 rounded text-xs font-medium transition-colors"
-                                        style="
-                                            background: rgba(37, 99, 235, 0.1);
-                                            color: var(--color-primary);
-                                        "
-                                    >
-                                        Edit
-                                    </a>
-                                    <button
-                                        @click="deleteProject(project.id)"
-                                        class="px-3 py-1 rounded text-xs font-medium transition-colors"
-                                        style="
-                                            background: rgba(239, 68, 68, 0.1);
-                                            color: #ef4444;
-                                        "
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </td>
+                           <!-- Actions -->
+<td class="px-6 py-4 text-sm">
+    <div class="flex justify-center gap-2">
+        
+            :href="route('admin.projects.show', project.id)"
+            class="px-3 py-1 rounded text-xs font-medium transition-colors"
+            style="
+                background: rgba(56, 189, 248, 0.1);
+                color: var(--color-accent);
+            "
+        >
+            View
+        </a>
+        
+            :href="route('admin.projects.edit', project.id)"
+            class="px-3 py-1 rounded text-xs font-medium transition-colors"
+            style="
+                background: rgba(37, 99, 235, 0.1);
+                color: var(--color-primary);
+            "
+        >
+            Edit
+        </a>
+        <button
+            @click="deleteProject(project.id)"
+            class="px-3 py-1 rounded text-xs font-medium transition-colors"
+            style="
+                background: rgba(239, 68, 68, 0.1);
+                color: #ef4444;
+            "
+        >
+            Delete
+        </button>
+    </div>
+</td>
                         </tr>
                     </tbody>
                 </table>

@@ -38,8 +38,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
             'destroy' => 'admin.projects.destroy',
         ],
         'parameters' => ['project' => 'project'],
-    ])->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
-    
+    ])->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+
     Route::resource('skills', SkillController::class, [
         'names' => [
             'index' => 'admin.skills.index',
