@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         'parameters' => ['project' => 'project'],
     ])->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
 
-    Route::resource('skills', SkillController::class, [
+    Route::resource('skill', SkillController::class, [
         'names' => [
             'index' => 'admin.skills.index',
             'create' => 'admin.skills.create',
@@ -77,7 +77,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
             'destroy' => 'admin.experiences.destroy',
         ],
         'parameters' => ['experience' => 'experience'],
-    ])->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+    ])->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 
     // Admin Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');

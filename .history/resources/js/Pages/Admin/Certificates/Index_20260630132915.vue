@@ -4,20 +4,21 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import Button from "@/Components/UI/Button.vue";
 
 defineProps({
-    experiences: Array,
+    certificates: Array,
 });
 </script>
 
 <template>
     <AdminLayout>
         <div>
+            <!-- Header -->
             <div class="mb-8 flex justify-between items-center">
                 <div>
                     <h2
                         class="text-3xl font-bold"
                         style="color: var(--color-text-primary)"
                     >
-                        Experiences Management
+                        Certificates Management
                     </h2>
                     <p
                         style="
@@ -25,14 +26,15 @@ defineProps({
                             margin-top: 4px;
                         "
                     >
-                        Manage your work experiences
+                        Manage your certificates and achievements
                     </p>
                 </div>
-                <Link :href="route('admin.experiences.create')">
-                    <Button variant="primary"> + New Experience </Button>
+                <Link :href="route('admin.certificates.create')">
+                    <Button variant="primary"> + New Certificate </Button>
                 </Link>
             </div>
 
+            <!-- Certificates Table -->
             <div
                 class="rounded-lg overflow-hidden"
                 style="
@@ -41,22 +43,24 @@ defineProps({
                     box-shadow: var(--glass-shadow);
                 "
             >
-                <div v-if="experiences.length === 0" class="p-8 text-center">
+                <!-- Empty State -->
+                <div v-if="certificates.length === 0" class="p-8 text-center">
                     <p
                         style="
                             color: var(--color-text-secondary);
                             margin-bottom: 16px;
                         "
                     >
-                        No experiences yet. Add your first experience!
+                        No certificates yet. Add your first certificate!
                     </p>
-                    <Link :href="route('admin.experiences.create')">
+                    <Link :href="route('admin.certificates.create')">
                         <Button variant="primary">
-                            Add First Experience
+                            Add First Certificate
                         </Button>
                     </Link>
                 </div>
 
+                <!-- Table -->
                 <table v-else class="w-full">
                     <thead
                         style="
@@ -75,13 +79,13 @@ defineProps({
                                 class="px-6 py-4 text-left text-sm font-semibold"
                                 style="color: var(--color-text-primary)"
                             >
-                                Company
+                                Issuer
                             </th>
                             <th
                                 class="px-6 py-4 text-left text-sm font-semibold"
                                 style="color: var(--color-text-primary)"
                             >
-                                Period
+                                Issue Date
                             </th>
                             <th
                                 class="px-6 py-4 text-center text-sm font-semibold"
@@ -91,10 +95,11 @@ defineProps({
                             </th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr
-                            v-for="exp in experiences"
-                            :key="exp.id"
+                            v-for="cert in certificates"
+                            :key="cert.id"
                             style="
                                 border-bottom: 1px solid
                                     rgba(148, 163, 184, 0.1);
@@ -104,46 +109,34 @@ defineProps({
                                 class="px-6 py-4 text-sm"
                                 style="color: var(--color-text-primary)"
                             >
-                                <div class="font-medium">{{ exp.title }}</div>
-                                <span
-                                    v-if="exp.is_current"
-                                    class="text-xs"
-                                    style="color: var(--color-accent)"
-                                >
-                                    Currently working
-                                </span>
+                                <div class="font-medium">{{ cert.title }}</div>
                             </td>
+
                             <td
                                 class="px-6 py-4 text-sm"
                                 style="color: var(--color-text-secondary)"
                             >
-                                {{ exp.company }}
+                                {{ cert.issuer }}
                             </td>
+
                             <td
                                 class="px-6 py-4 text-sm"
                                 style="color: var(--color-text-secondary)"
                             >
                                 {{
                                     new Date(
-                                        exp.start_date,
+                                        cert.issue_date,
                                     ).toLocaleDateString()
                                 }}
-                                -
-                                {{
-                                    exp.is_current
-                                        ? "Present"
-                                        : new Date(
-                                              exp.end_date,
-                                          ).toLocaleDateString()
-                                }}
                             </td>
+
                             <td class="px-6 py-4 text-sm">
                                 <div class="flex justify-center gap-2">
                                     <Link
                                         :href="
                                             route(
-                                                'admin.experiences.show',
-                                                exp.id,
+                                                'admin.certificates.show',
+                                                cert.id,
                                             )
                                         "
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
@@ -157,8 +150,8 @@ defineProps({
                                     <Link
                                         :href="
                                             route(
-                                                'admin.experiences.edit',
-                                                exp.id,
+                                                'admin.certificates.edit',
+                                                cert.id,
                                             )
                                         "
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
@@ -170,7 +163,7 @@ defineProps({
                                         Edit
                                     </Link>
                                     <button
-                                        @click="deleteExperience(exp.id)"
+                                        @click="deleteCertificate(cert.id)"
                                         class="px-3 py-1 rounded text-xs font-medium transition-colors"
                                         style="
                                             background: rgba(239, 68, 68, 0.1);
@@ -190,10 +183,10 @@ defineProps({
                 class="mt-6 text-sm"
                 style="color: var(--color-text-secondary)"
             >
-                Total Experiences:
+                Total Certificates:
                 <span
-                    style="color: var(--color-text-primary); font-weight: 600;"
-                    >{{ experiences.length }}</span
+                    style="color: var(--color-text-primary); font-semibold;"
+                    >{{ certificates.length }}</span
                 >
             </div>
         </div>
@@ -203,9 +196,11 @@ defineProps({
 <script>
 export default {
     methods: {
-        deleteExperience(expId) {
+        deleteCertificate(certId) {
             if (confirm("Are you sure?")) {
-                this.$inertia.delete(route("admin.experiences.destroy", expId));
+                this.$inertia.delete(
+                    route("admin.certificates.destroy", certId),
+                );
             }
         },
     },
@@ -288,5 +283,8 @@ button {
 }
 a {
     text-decoration: none;
+}
+.rounded {
+    border-radius: 0.25rem;
 }
 </style>

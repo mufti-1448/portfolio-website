@@ -192,7 +192,7 @@ defineProps({
             >
                 Total Experiences:
                 <span
-                    style="color: var(--color-text-primary); font-weight: 600;"
+                    style="color: var(--color-text-primary); font-semibold;"
                     >{{ experiences.length }}</span
                 >
             </div>

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ExperienceController;
 use Illuminate\Support\Facades\Route;
@@ -77,7 +77,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
             'destroy' => 'admin.experiences.destroy',
         ],
         'parameters' => ['experience' => 'experience'],
-    ])->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+    ])->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 
     // Admin Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');

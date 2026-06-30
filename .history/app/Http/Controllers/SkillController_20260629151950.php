@@ -95,9 +95,3 @@ class SkillController extends Controller
     {
         $skill->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Skill deleted successfully',
-        ], 200);
-    }
-}

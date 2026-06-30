@@ -33,6 +33,7 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|in:Frontend,Backend,Database,Tools',
@@ -40,8 +41,10 @@ class SkillController extends Controller
             'proficiency' => 'required|integer|min:1|max:5',
         ]);
 
+        // Create skill
         Skill::create($validated);
 
+        // Return JSON response
         return response()->json([
             'success' => true,
             'message' => 'Skill created successfully',
@@ -73,6 +76,7 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
+        // Validate request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|in:Frontend,Backend,Database,Tools',
@@ -80,8 +84,10 @@ class SkillController extends Controller
             'proficiency' => 'required|integer|min:1|max:5',
         ]);
 
+        // Update skill
         $skill->update($validated);
 
+        // Return JSON response
         return response()->json([
             'success' => true,
             'message' => 'Skill updated successfully',
@@ -95,6 +101,7 @@ class SkillController extends Controller
     {
         $skill->delete();
 
+        // Return JSON response
         return response()->json([
             'success' => true,
             'message' => 'Skill deleted successfully',
