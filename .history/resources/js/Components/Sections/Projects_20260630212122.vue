@@ -10,7 +10,7 @@ defineProps({
 <template>
     <section
         class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-        style="scroll-margin-top: 80px"
+        style="scroll-margin-top: 80px;"
         id="projects"
     >
         <!-- Section Header -->
@@ -23,7 +23,7 @@ defineProps({
             </h2>
             <p
                 class="text-lg"
-                style="color: var(--color-text-secondary); line-height: 1.8"
+                style="color: var(--color-text-secondary); line-height: 1.8;"
             >
                 Showcase of my recent work and side projects
             </p>
@@ -31,16 +31,13 @@ defineProps({
 
         <!-- Empty State -->
         <div v-if="projects.length === 0" class="text-center py-12">
-            <p style="color: var(--color-text-secondary); font-size: 1.125rem">
+            <p style="color: var(--color-text-secondary); font-size: 1.125rem;">
                 No projects added yet.
             </p>
         </div>
 
         <!-- Projects Grid -->
-        <div
-            v-else
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
                 v-for="(project, index) in projects"
                 :key="project.id"
@@ -55,31 +52,13 @@ defineProps({
                 :style="{
                     animationDelay: `${index * 100}ms`,
                 }"
-                @mouseenter="
-                    $event.currentTarget.style.transform = 'translateY(-8px)';
-                    $event.currentTarget.style.borderColor =
-                        'rgba(56, 189, 248, 0.4)';
-                    $event.currentTarget.style.boxShadow =
-                        '0 20px 40px rgba(37, 99, 235, 0.3)';
-                "
-                @mouseleave="
-                    $event.currentTarget.style.transform = 'translateY(0)';
-                    $event.currentTarget.style.borderColor =
-                        'rgba(148, 163, 184, 0.2)';
-                    $event.currentTarget.style.boxShadow =
-                        'var(--glass-shadow)';
-                "
+                @mouseenter="$event.currentTarget.style.transform = 'translateY(-8px)'; $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)'; $event.currentTarget.style.boxShadow = '0 20px 40px rgba(37, 99, 235, 0.3)'"
+                @mouseleave="$event.currentTarget.style.transform = 'translateY(0)'; $event.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.2)'; $event.currentTarget.style.boxShadow = 'var(--glass-shadow)'"
             >
                 <!-- Project Image -->
                 <div
                     class="relative h-48 overflow-hidden"
-                    style="
-                        background: linear-gradient(
-                            135deg,
-                            rgba(56, 189, 248, 0.1),
-                            rgba(37, 99, 235, 0.1)
-                        );
-                    "
+                    style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(37, 99, 235, 0.1));"
                 >
                     <img
                         v-if="project.image"
@@ -90,7 +69,7 @@ defineProps({
                     <div
                         v-else
                         class="w-full h-full flex items-center justify-center"
-                        style="color: var(--color-text-secondary)"
+                        style="color: var(--color-text-secondary);"
                     >
                         📁 No Image
                     </div>
@@ -126,9 +105,7 @@ defineProps({
                     <!-- Tech Stack -->
                     <div class="flex flex-wrap gap-2 mb-6">
                         <span
-                            v-for="(tech, idx) in (
-                                project.tech_stack || []
-                            ).slice(0, 3)"
+                            v-for="(tech, idx) in (project.tech_stack || []).slice(0, 3)"
                             :key="`${project.id}-${idx}`"
                             class="px-2 py-1 rounded text-xs"
                             style="
@@ -174,11 +151,7 @@ defineProps({
                             rel="noopener noreferrer"
                             class="flex-1 px-4 py-2 rounded-md text-sm font-semibold text-center transition-all duration-200"
                             style="
-                                background: linear-gradient(
-                                    135deg,
-                                    var(--color-primary),
-                                    rgba(56, 189, 248, 0.8)
-                                );
+                                background: linear-gradient(135deg, var(--color-primary), rgba(56, 189, 248, 0.8));
                                 color: white;
                                 text-decoration: none;
                             "
