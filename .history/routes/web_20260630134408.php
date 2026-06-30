@@ -7,8 +7,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ExperienceController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Models\Project;
-use App\Models\Skill;
+
 // ============================================
 // PUBLIC ROUTES
 // ============================================

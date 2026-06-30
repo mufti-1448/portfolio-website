@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const props = defineProps({
     skills: {
@@ -11,14 +11,14 @@ const props = defineProps({
 // Group skills by category
 const groupedSkills = computed(() => {
     const groups = {};
-
-    props.skills.forEach((skill) => {
+    
+    props.skills.forEach(skill => {
         if (!groups[skill.category]) {
             groups[skill.category] = [];
         }
         groups[skill.category].push(skill);
     });
-
+    
     return groups;
 });
 </script>
@@ -26,7 +26,7 @@ const groupedSkills = computed(() => {
 <template>
     <section
         class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-        style="scroll-margin-top: 80px"
+        style="scroll-margin-top: 80px;"
         id="skills"
     >
         <!-- Section Header -->
@@ -39,7 +39,7 @@ const groupedSkills = computed(() => {
             </h2>
             <p
                 class="text-lg"
-                style="color: var(--color-text-secondary); line-height: 1.8"
+                style="color: var(--color-text-secondary); line-height: 1.8;"
             >
                 Technical skills and proficiencies across different domains
             </p>
@@ -47,7 +47,7 @@ const groupedSkills = computed(() => {
 
         <!-- Empty State -->
         <div v-if="skills.length === 0" class="text-center py-12">
-            <p style="color: var(--color-text-secondary); font-size: 1.125rem">
+            <p style="color: var(--color-text-secondary); font-size: 1.125rem;">
                 No skills added yet.
             </p>
         </div>
@@ -57,7 +57,7 @@ const groupedSkills = computed(() => {
             <div
                 v-for="category in Object.keys(groupedSkills)"
                 :key="category"
-                style="animation: slideInUp 600ms ease-out forwards; opacity: 0"
+                style="animation: slideInUp 600ms ease-out forwards; opacity: 0;"
                 :style="{
                     animationDelay: `${Object.keys(groupedSkills).indexOf(category) * 100}ms`,
                 }"
@@ -73,9 +73,7 @@ const groupedSkills = computed(() => {
                 </div>
 
                 <!-- Skills Grid -->
-                <div
-                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
-                >
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     <div
                         v-for="skill in groupedSkills[category]"
                         :key="skill.id"
@@ -86,30 +84,12 @@ const groupedSkills = computed(() => {
                             box-shadow: var(--glass-shadow);
                             cursor: pointer;
                         "
-                        @mouseenter="
-                            $event.currentTarget.style.transform =
-                                'translateY(-8px)';
-                            $event.currentTarget.style.borderColor =
-                                'rgba(56, 189, 248, 0.4)';
-                            $event.currentTarget.style.boxShadow =
-                                '0 20px 40px rgba(37, 99, 235, 0.3)';
-                        "
-                        @mouseleave="
-                            $event.currentTarget.style.transform =
-                                'translateY(0)';
-                            $event.currentTarget.style.borderColor =
-                                'rgba(148, 163, 184, 0.2)';
-                            $event.currentTarget.style.boxShadow =
-                                'var(--glass-shadow)';
-                        "
+                        @mouseenter="$event.currentTarget.style.transform = 'translateY(-8px)'; $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)'; $event.currentTarget.style.boxShadow = '0 20px 40px rgba(37, 99, 235, 0.3)'"
+                        @mouseleave="$event.currentTarget.style.transform = 'translateY(0)'; $event.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.2)'; $event.currentTarget.style.boxShadow = 'var(--glass-shadow)'"
                     >
-                        <div
-                            class="flex flex-col items-center justify-center gap-3"
-                        >
+                        <div class="flex flex-col items-center justify-center gap-3">
                             <!-- Icon -->
-                            <span class="text-4xl">{{
-                                skill.icon || "⚙️"
-                            }}</span>
+                            <span class="text-4xl">{{ skill.icon || '⚙️' }}</span>
 
                             <!-- Skill Name -->
                             <p
@@ -122,7 +102,7 @@ const groupedSkills = computed(() => {
                             <!-- Proficiency -->
                             <div class="text-xs">
                                 <span v-for="n in 5" :key="n">
-                                    {{ n <= skill.proficiency ? "⭐" : "☆" }}
+                                    {{ n <= skill.proficiency ? '⭐' : '☆' }}
                                 </span>
                             </div>
                         </div>

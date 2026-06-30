@@ -128,7 +128,7 @@ defineProps({
 
                     <!-- Buttons -->
                     <div class="flex gap-3">
-                        <a
+                        
                             v-if="project.github_url"
                             :href="project.github_url"
                             target="_blank"
@@ -143,7 +143,7 @@ defineProps({
                         >
                             Code
                         </a>
-                        <a
+                        
                             v-if="project.live_url"
                             :href="project.live_url"
                             target="_blank"
