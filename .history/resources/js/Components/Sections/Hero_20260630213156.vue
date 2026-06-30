@@ -240,7 +240,7 @@ import Button from "@/Components/UI/Button.vue";
                     >
                         <!-- Profile Image -->
                         <img
-                            src="/images/profile.jpeg"
+                            src="/images/profile.jpg"
                             alt="Foto profil Ali"
                             style="
                                 width: 100%;
@@ -251,7 +251,7 @@ import Button from "@/Components/UI/Button.vue";
                         />
 
                         <!-- Tech Stack Badges -->
-                        <div
+                        <!-- <div
                             style="
                                 position: absolute;
                                 bottom: 20px;
@@ -301,7 +301,7 @@ import Button from "@/Components/UI/Button.vue";
                             >
                                 Laravel
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ import Card from "@/Components/UI/Card.vue";
                         "
                     >
                         <img
-                            src="/images/profile.jpeg"
+                            src="/images/profile.svg\\"
                             alt="Foto profil Ali"
                             style="
                                 width: 100%;

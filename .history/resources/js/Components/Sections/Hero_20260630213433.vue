@@ -251,7 +251,7 @@ import Button from "@/Components/UI/Button.vue";
                         />
 
                         <!-- Tech Stack Badges -->
-                        <div
+                        <!-- <div
                             style="
                                 position: absolute;
                                 bottom: 20px;
@@ -301,7 +301,7 @@ import Button from "@/Components/UI/Button.vue";
                             >
                                 Laravel
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
