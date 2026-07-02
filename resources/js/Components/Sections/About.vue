@@ -1,8 +1,10 @@
 <script setup>
+// KODE SEKARANG
 import Card from "@/Components/UI/Card.vue";
 </script>
 
 <template>
+    <!-- TEMPLATE SEKARANG -->
     <!-- About Section -->
     <section
         id="about"
@@ -132,6 +134,7 @@ import Card from "@/Components/UI/Card.vue";
 </template>
 
 <style scoped>
+/* STYLE SEKARANG */
 @keyframes slideInLeft {
     from {
         opacity: 0;

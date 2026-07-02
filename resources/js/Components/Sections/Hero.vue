@@ -1,8 +1,10 @@
 <script setup>
+//KODE SEKARANG
 import Button from "@/Components/UI/Button.vue";
 </script>
 
 <template>
+    <!-- TEMPLATE SEKARANG -->
     <!-- Hero Section -->
     <section
         id="home"
@@ -337,6 +339,7 @@ import Button from "@/Components/UI/Button.vue";
 </template>
 
 <style scoped>
+    /* STYLE SEKARANG */
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
