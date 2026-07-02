@@ -6,13 +6,11 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { createApp, h } from "vue";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy";
 
-// ============================================
-// FontAwesome v6 Setup
-// ============================================
+// FontAwesome Setup
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-// ✅ Import solid icons (UI elements)
+// ✅ Solid icons (UI elements)
 import {
     faHome,
     faCode,
@@ -23,15 +21,16 @@ import {
     faPhone,
     faMapMarkerAlt,
     faChevronDown,
-    faBars, // Hamburger menu icon
-    faXmark, // Close/times icon (pengganti faTimes di v5)
+    faMenu,
+    faTimes,
     faArrowRight,
     faStar,
     faUser,
     faDownload,
+    faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
-// ✅ Import brand icons (social media logos)
+// ✅ Brand icons (social media logos - HANYA dari free-brands-svg-icons)
 import {
     faGithub,
     faLinkedin,
@@ -39,9 +38,7 @@ import {
     faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 
-// ✅ Add icons ke library (registrasi)
-// Hanya icons yang di-add ini yang akan di-bundle
-// Icons lain tidak akan di-include (optimasi ukuran)
+// ✅ Add SEMUA icons ke library (solid + brand)
 library.add(
     // Solid icons
     faHome,
@@ -53,12 +50,13 @@ library.add(
     faPhone,
     faMapMarkerAlt,
     faChevronDown,
-    faBars,
-    faXmark,
+    faMenu,
+    faTimes,
     faArrowRight,
     faStar,
     faUser,
     faDownload,
+    faBars,
     // Brand icons
     faGithub,
     faLinkedin,
@@ -66,9 +64,10 @@ library.add(
     faWhatsapp,
 );
 
-// ============================================
-// Initialize Inertia App
-// ============================================
+// ✅ Register FontAwesomeIcon sebagai global component
+// Sekarang bisa pakai <Icon /> di semua .vue files tanpa import
+app.component("Icon", FontAwesomeIcon);
+
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
@@ -83,8 +82,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue);
 
-        // ✅ Register FontAwesomeIcon sebagai global component
-        // Sekarang bisa pakai <Icon /> di semua .vue files
+        // ✅ Register FontAwesomeIcon sebagai component sebelum mount
         vueApp.component("Icon", FontAwesomeIcon);
 
         return vueApp.mount(el);

@@ -269,7 +269,6 @@ const toggleMobileMenu = () => {
 .navbar-logo:hover .logo-name {
     color: var(--color-accent);
 }
-
 /* Desktop Menu */
 .navbar-menu-desktop {
     display: none;

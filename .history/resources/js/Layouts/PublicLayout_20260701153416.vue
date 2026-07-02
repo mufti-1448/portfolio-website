@@ -9,38 +9,93 @@ defineProps({
 // ============================================
 // STATE MANAGEMENT
 // ============================================
+
+// Apakah navbar sudah di-scroll (untuk background opacity)
 const isScrolled = ref(false);
+
+// Apakah mobile menu terbuka
 const isMobileMenuOpen = ref(false);
+
+// Section mana yang sedang aktif (untuk highlight menu)
 const activeSection = ref("home");
 
-/**
- * Menu items - Hardcoded text (English)
- */
+// Menu items dengan icon
 const menuItems = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Skills", id: "skills" },
-    { label: "Projects", id: "projects" },
-    { label: "Contact", id: "contact" },
+    { label: "Home", href: "#home", id: "home", icon: "fa-solid fa-home" },
+    { label: "About", href: "#about", id: "about", icon: "fa-solid fa-user" },
+    {
+        label: "Skills",
+        href: "#skills",
+        id: "skills",
+        icon: "fa-solid fa-code",
+    },
+    {
+        label: "Projects",
+        href: "#projects",
+        id: "projects",
+        icon: "fa-solid fa-briefcase",
+    },
+    {
+        label: "Contact",
+        href: "#contact",
+        id: "contact",
+        icon: "fa-solid fa-envelope",
+    },
 ];
 
 // ============================================
-// SCROLL & INTERSECTION OBSERVER
+// SCROLL EVENT HANDLER
 // ============================================
+/**
+ * KONSEP: Scroll Event Listener
+ *
+ * Ketika user scroll:
+ * 1. Check apakah sudah scroll lebih dari 50px
+ *    → Yes: navbar background opaque (solid)
+ *    → No: navbar background transparent
+ *
+ * Ini membuat navbar terlihat "jelas" saat user scroll
+ * dan "ringan" saat di posisi awal
+ */
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 50;
 };
 
+// ============================================
+// INTERSECTION OBSERVER SETUP
+// ============================================
+/**
+ * KONSEP: IntersectionObserver API
+ *
+ * Ini adalah browser native API yang EFFICIENT untuk detect
+ * kapan element masuk/keluar viewport (layar yang terlihat)
+ *
+ * Mengapa lebih baik daripada manual calculation?
+ * - Browser native: performa optimal
+ * - Tidak perlu loop through elements
+ * - Automatic throttling: tidak lag saat scroll
+ *
+ * Use case: Detect active section untuk navbar highlight
+ *
+ * Options:
+ * - root: null (viewport default)
+ * - rootMargin: '-50% 0px -50% 0px'
+ *   → Trigger saat element di tengah layar
+ * - threshold: 0
+ *   → Mulai trigger saat 0% element visible
+ */
 const setupIntersectionObserver = () => {
     const options = {
         root: null,
-        rootMargin: "-50% 0px -50% 0px",
+        rootMargin: "-50% 0px -50% 0px", // Section dianggap active saat di tengah viewport
         threshold: 0,
     };
 
+    // Callback: dipanggil saat element masuk/keluar view
     const callback = (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
+                // Element sekarang di tengah viewport → set sebagai active
                 activeSection.value = entry.target.id;
             }
         });
@@ -48,6 +103,7 @@ const setupIntersectionObserver = () => {
 
     const observer = new IntersectionObserver(callback, options);
 
+    // Observe semua section yang ada di menuItems
     menuItems.forEach((item) => {
         const element = document.getElementById(item.id);
         if (element) observer.observe(element);
@@ -58,29 +114,66 @@ const setupIntersectionObserver = () => {
 
 let intersectionObserver = null;
 
+// ============================================
+// LIFECYCLE HOOKS
+// ============================================
+/**
+ * onMounted: Dipanggil saat component sudah rendered di DOM
+ *
+ * Di sini kita:
+ * 1. Attach scroll event listener
+ * 2. Setup IntersectionObserver
+ * 3. Initial check (cek posisi saat pertama load)
+ */
 onMounted(() => {
+    // Setup scroll listener dengan passive:true (performa optimization)
     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Setup intersection observer untuk active section detection
     intersectionObserver = setupIntersectionObserver();
+
+    // Initial check: cek scroll position saat pertama kali load
     handleScroll();
 });
 
+/**
+ * onUnmounted: Dipanggil saat component dihapus dari DOM
+ *
+ * PENTING: Cleanup event listeners!
+ * Jika tidak di-cleanup → memory leak (memori terus bertambah)
+ *
+ * Best practice: Selalu cleanup di onUnmounted
+ */
 onUnmounted(() => {
+    // Remove scroll listener
     window.removeEventListener("scroll", handleScroll);
+
+    // Disconnect intersection observer
     if (intersectionObserver) intersectionObserver.disconnect();
 });
 
 // ============================================
 // EVENT HANDLERS
 // ============================================
+/**
+ * Smooth scroll ketika user click menu
+ *
+ * Proses:
+ * 1. Prevent default link behavior (e.preventDefault())
+ * 2. Find element dengan id yang diminta
+ * 3. Scroll ke element dengan behavior 'smooth'
+ * 4. Close mobile menu (jika buka)
+ */
 const scrollToSection = (e, sectionId) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        isMobileMenuOpen.value = false;
+        isMobileMenuOpen.value = false; // Close mobile menu setelah click
     }
 };
 
+// Toggle mobile menu visibility
 const toggleMobileMenu = () => {
     isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
@@ -106,17 +199,14 @@ const toggleMobileMenu = () => {
         >
             <div class="navbar-container">
                 <!-- Logo/Brand -->
-                <Link href="/" class="navbar-logo">
-                    <span class="logo-code">&lt;/&gt;</span>
-                    <span class="logo-name">Ali</span>
-                </Link>
+                <Link href="/" class="navbar-logo"> Ali </Link>
 
                 <!-- Desktop Menu -->
                 <div class="navbar-menu-desktop">
                     <a
                         v-for="item in menuItems"
                         :key="item.id"
-                        :href="`#${item.id}`"
+                        :href="item.href"
                         @click="scrollToSection($event, item.id)"
                         class="navbar-link"
                         :style="{
@@ -126,11 +216,12 @@ const toggleMobileMenu = () => {
                                     : 'var(--color-text-secondary)',
                         }"
                     >
+                        <Icon :icon="item.icon" style="font-size: 16px" />
                         {{ item.label }}
                     </a>
                 </div>
 
-                <!-- Right Actions (CV + Mobile Menu) -->
+                <!-- Right Actions (CV Download + Mobile Menu) -->
                 <div class="navbar-actions">
                     <!-- Download CV Button (Desktop) -->
                     <a
@@ -139,6 +230,10 @@ const toggleMobileMenu = () => {
                         rel="noopener noreferrer"
                         class="navbar-cv-button navbar-cv-desktop"
                     >
+                        <Icon
+                            icon="fa-solid fa-download"
+                            style="margin-right: 8px"
+                        />
                         Download CV
                     </a>
 
@@ -163,7 +258,7 @@ const toggleMobileMenu = () => {
                 <a
                     v-for="item in menuItems"
                     :key="item.id"
-                    :href="`#${item.id}`"
+                    :href="item.href"
                     @click="scrollToSection($event, item.id)"
                     class="navbar-mobile-link"
                     :style="{
@@ -177,6 +272,7 @@ const toggleMobileMenu = () => {
                                 : 'var(--color-text-secondary)',
                     }"
                 >
+                    <Icon :icon="item.icon" style="font-size: 18px" />
                     {{ item.label }}
                 </a>
 
@@ -187,12 +283,16 @@ const toggleMobileMenu = () => {
                     rel="noopener noreferrer"
                     class="navbar-cv-button navbar-cv-mobile"
                 >
+                    <Icon
+                        icon="fa-solid fa-download"
+                        style="margin-right: 8px"
+                    />
                     Download CV
                 </a>
             </div>
         </nav>
 
-        <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT: Add margin-top untuk offset navbar fixed -->
         <main style="margin-top: 64px">
             <slot />
         </main>
@@ -200,8 +300,24 @@ const toggleMobileMenu = () => {
 </template>
 
 <style scoped>
+/**
+ * PENJELASAN STYLING STRATEGY:
+ * 
+ * 1. Semantic class names (navbar-sticky, navbar-logo, dll)
+ *    → Lebih readable dibanding generic classes
+ * 
+ * 2. Flexbox untuk layout
+ *    → Modern, responsive, simple
+ * 
+ * 3. CSS variables untuk warna
+ *    → Konsisten dengan design system
+ * 
+ * 4. Media queries untuk responsive
+ *    → Desktop first approach
+ */
+
 /* ============================================ */
-/* NAVBAR */
+/* NAVBAR STICKY CONTAINER */
 /* ============================================ */
 .navbar-sticky {
     position: fixed;
@@ -223,6 +339,9 @@ const toggleMobileMenu = () => {
     align-items: center;
 }
 
+/* ============================================ */
+/* LOGO / BRAND */
+/* ============================================ */
 .navbar-logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -235,42 +354,9 @@ const toggleMobileMenu = () => {
     color: var(--color-accent);
 }
 
-.navbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.navbar-logo:hover {
-    color: var(--color-accent);
-}
-
-.logo-code {
-    font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    transition: color 0.3s ease;
-}
-
-.logo-name {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect: ganti warna logo sesuai hover */
-.navbar-logo:hover .logo-code,
-.navbar-logo:hover .logo-name {
-    color: var(--color-accent);
-}
-
-/* Desktop Menu */
+/* ============================================ */
+/* DESKTOP MENU */
+/* ============================================ */
 .navbar-menu-desktop {
     display: none;
     align-items: center;
@@ -284,6 +370,9 @@ const toggleMobileMenu = () => {
 }
 
 .navbar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
@@ -295,15 +384,14 @@ const toggleMobileMenu = () => {
 }
 
 /* ============================================ */
-/* NAVBAR ACTIONS */
+/* ACTIONS (CV + Mobile Toggle) */
 /* ============================================ */
 .navbar-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
-/* CV Button */
 .navbar-cv-button {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -313,7 +401,8 @@ const toggleMobileMenu = () => {
     background: var(--color-primary);
     color: white;
     transition: all 0.3s ease;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
 }
 
 .navbar-cv-button:hover {
@@ -321,17 +410,18 @@ const toggleMobileMenu = () => {
     transform: translateY(-2px);
 }
 
+/* Desktop CV button */
 .navbar-cv-desktop {
     display: none;
 }
 
 @media (min-width: 640px) {
     .navbar-cv-desktop {
-        display: inline-block;
+        display: inline-flex;
     }
 }
 
-/* Mobile Toggle */
+/* Mobile toggle button */
 .navbar-mobile-toggle {
     display: flex;
     align-items: center;
@@ -358,7 +448,7 @@ const toggleMobileMenu = () => {
 }
 
 /* ============================================ */
-/* MOBILE MENU */
+/* MOBILE MENU DROPDOWN */
 /* ============================================ */
 .navbar-menu-mobile {
     position: absolute;
@@ -391,6 +481,7 @@ const toggleMobileMenu = () => {
     background: rgba(37, 99, 235, 0.15);
 }
 
+/* Mobile CV button di dalam dropdown */
 .navbar-cv-mobile {
     width: 100%;
     text-align: center;
@@ -413,8 +504,14 @@ const toggleMobileMenu = () => {
 }
 
 /* ============================================ */
-/* RESPONSIVE */
+/* RESPONSIVE ADJUSTMENTS */
 /* ============================================ */
+@media (max-width: 767px) {
+    .navbar-container {
+        padding: 0 1rem;
+    }
+}
+
 @media (min-width: 1024px) {
     .navbar-container {
         padding: 0 2rem;

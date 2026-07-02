@@ -106,14 +106,11 @@ const toggleMobileMenu = () => {
         >
             <div class="navbar-container">
                 <!-- Logo/Brand -->
-                <Link href="/" class="navbar-logo">
-                    <span class="logo-code">&lt;/&gt;</span>
-                    <span class="logo-name">Ali</span>
-                </Link>
+                <Link href="/" class="navbar-logo"> Ali </Link>
 
                 <!-- Desktop Menu -->
                 <div class="navbar-menu-desktop">
-                    <a
+                    
                         v-for="item in menuItems"
                         :key="item.id"
                         :href="`#${item.id}`"
@@ -232,41 +229,6 @@ const toggleMobileMenu = () => {
 }
 
 .navbar-logo:hover {
-    color: var(--color-accent);
-}
-
-.navbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.navbar-logo:hover {
-    color: var(--color-accent);
-}
-
-.logo-code {
-    font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    transition: color 0.3s ease;
-}
-
-.logo-name {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect: ganti warna logo sesuai hover */
-.navbar-logo:hover .logo-code,
-.navbar-logo:hover .logo-name {
     color: var(--color-accent);
 }
 

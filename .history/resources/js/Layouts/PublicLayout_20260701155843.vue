@@ -14,14 +14,15 @@ const isMobileMenuOpen = ref(false);
 const activeSection = ref("home");
 
 /**
- * Menu items - Hardcoded text (English)
+ * Menu items - TANPA icons
+ * Hanya label saja, translated di template
  */
 const menuItems = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Skills", id: "skills" },
-    { label: "Projects", id: "projects" },
-    { label: "Contact", id: "contact" },
+    { label: "navbar.home", id: "home" },
+    { label: "navbar.about", id: "about" },
+    { label: "navbar.skills", id: "skills" },
+    { label: "navbar.projects", id: "projects" },
+    { label: "navbar.contact", id: "contact" },
 ];
 
 // ============================================
@@ -106,10 +107,7 @@ const toggleMobileMenu = () => {
         >
             <div class="navbar-container">
                 <!-- Logo/Brand -->
-                <Link href="/" class="navbar-logo">
-                    <span class="logo-code">&lt;/&gt;</span>
-                    <span class="logo-name">Ali</span>
-                </Link>
+                <Link href="/" class="navbar-logo"> Ali </Link>
 
                 <!-- Desktop Menu -->
                 <div class="navbar-menu-desktop">
@@ -126,12 +124,14 @@ const toggleMobileMenu = () => {
                                     : 'var(--color-text-secondary)',
                         }"
                     >
-                        {{ item.label }}
+                        <!-- PERUBAHAN: Gunakan t() function untuk translate text -->
+                        {{ t(item.label) }}
                     </a>
                 </div>
 
                 <!-- Right Actions (CV + Mobile Menu) -->
                 <div class="navbar-actions">
+
                     <!-- Download CV Button (Desktop) -->
                     <a
                         href="/files/cv-ali.pdf"
@@ -139,7 +139,7 @@ const toggleMobileMenu = () => {
                         rel="noopener noreferrer"
                         class="navbar-cv-button navbar-cv-desktop"
                     >
-                        Download CV
+                        {{ t("navbar.downloadCv") }}
                     </a>
 
                     <!-- Mobile Menu Toggle Button -->
@@ -177,7 +177,7 @@ const toggleMobileMenu = () => {
                                 : 'var(--color-text-secondary)',
                     }"
                 >
-                    {{ item.label }}
+                    {{ t(item.label) }}
                 </a>
 
                 <!-- Download CV (Mobile) -->
@@ -187,7 +187,7 @@ const toggleMobileMenu = () => {
                     rel="noopener noreferrer"
                     class="navbar-cv-button navbar-cv-mobile"
                 >
-                    Download CV
+                    {{ t("navbar.downloadCv") }}
                 </a>
             </div>
         </nav>
@@ -235,41 +235,6 @@ const toggleMobileMenu = () => {
     color: var(--color-accent);
 }
 
-.navbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.navbar-logo:hover {
-    color: var(--color-accent);
-}
-
-.logo-code {
-    font-family: 'Courier New', 'Fira Code', monospace;
-    font-size: 1.25rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    letter-spacing: -0.05em;
-    transition: color 0.3s ease;
-}
-
-.logo-name {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    font-weight: 700;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect: ganti warna logo sesuai hover */
-.navbar-logo:hover .logo-code,
-.navbar-logo:hover .logo-name {
-    color: var(--color-accent);
-}
-
 /* Desktop Menu */
 .navbar-menu-desktop {
     display: none;
@@ -301,6 +266,27 @@ const toggleMobileMenu = () => {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+}
+
+
+
+.lang-button {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+    border-color: var(--color-primary);
+}
+
+.lang-separator {
+    color: var(--color-text-secondary);
+    font-weight: 300;
 }
 
 /* CV Button */
