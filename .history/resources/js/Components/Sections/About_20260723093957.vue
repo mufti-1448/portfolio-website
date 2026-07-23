@@ -8,10 +8,7 @@
     <section
         id="about"
         class="relative py-20"
-        style="
-            background-color: var(--color-bg-primary);
-            scroll-margin-top: 80px;
-        "
+        style="background-color: var(--color-bg-primary); scroll-margin-top: 80px"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Title -->
@@ -89,13 +86,7 @@
                                 font-size: 0.875rem;
                             "
                         >
-                            <Icon
-                                icon="fa-solid fa-location-dot"
-                                style="
-                                    color: var(--color-accent);
-                                    font-size: 1rem;
-                                "
-                            />
+                            <Icon icon="fa-solid fa-location-dot" style="color: var(--color-accent); font-size: 1rem;" />
                             <span>Bandung, Jawa Barat</span>
                         </div>
 
@@ -109,13 +100,7 @@
                                 border-top: 1px solid rgba(148, 163, 184, 0.1);
                             "
                         >
-                            <Icon
-                                icon="fa-solid fa-graduation-cap"
-                                style="
-                                    color: var(--color-primary);
-                                    font-size: 1rem;
-                                "
-                            />
+                            <Icon icon="fa-solid fa-graduation-cap" style="color: var(--color-primary); font-size: 1rem;" />
                             <span>Lulusan SMK Syafi'i Akrom</span>
                         </div>
                     </div>
@@ -143,15 +128,11 @@
                                 font-size: 1.0625rem;
                             "
                         >
-                            I am an Information Systems student at Telkom
-                            University with a deep passion for crafting digital
-                            experiences. My journey in tech is driven by a
-                            desire to bridge the gap between complex backend
-                            systems and intuitive user interfaces. I believe in
-                            writing clean code and designing with the user in
-                            mind. Currently expanding my skills in full-stack
-                            development, UI/UX design, and modern web
-                            technologies.
+                            I am an Information Systems student at Telkom University with a deep passion for
+                            crafting digital experiences. My journey in tech is driven by a desire to bridge the gap
+                            between complex backend systems and intuitive user interfaces. I believe in writing clean
+                            code and designing with the user in mind. Currently expanding my skills in full-stack
+                            development, UI/UX design, and modern web technologies.
                         </p>
                     </div>
 
@@ -169,20 +150,15 @@
                             style="
                                 border: 2px solid var(--color-accent);
                                 background: rgba(56, 189, 248, 0.03);
-                                transition:
-                                    transform 0.3s ease,
-                                    box-shadow 0.3s ease;
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 cursor: pointer;
                             "
                             @mouseenter="
-                                $event.currentTarget.style.transform =
-                                    'scale(1.05)';
-                                $event.currentTarget.style.boxShadow =
-                                    '0 0 20px rgba(56, 189, 248, 0.3)';
+                                $event.currentTarget.style.transform = 'scale(1.05)';
+                                $event.currentTarget.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.3)';
                             "
                             @mouseleave="
-                                $event.currentTarget.style.transform =
-                                    'scale(1)';
+                                $event.currentTarget.style.transform = 'scale(1)';
                                 $event.currentTarget.style.boxShadow = 'none';
                             "
                         >
@@ -206,20 +182,15 @@
                             style="
                                 border: 2px solid var(--color-accent);
                                 background: rgba(56, 189, 248, 0.03);
-                                transition:
-                                    transform 0.3s ease,
-                                    box-shadow 0.3s ease;
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 cursor: pointer;
                             "
                             @mouseenter="
-                                $event.currentTarget.style.transform =
-                                    'scale(1.05)';
-                                $event.currentTarget.style.boxShadow =
-                                    '0 0 20px rgba(56, 189, 248, 0.3)';
+                                $event.currentTarget.style.transform = 'scale(1.05)';
+                                $event.currentTarget.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.3)';
                             "
                             @mouseleave="
-                                $event.currentTarget.style.transform =
-                                    'scale(1)';
+                                $event.currentTarget.style.transform = 'scale(1)';
                                 $event.currentTarget.style.boxShadow = 'none';
                             "
                         >
@@ -243,20 +214,15 @@
                             style="
                                 border: 2px solid var(--color-accent);
                                 background: rgba(56, 189, 248, 0.03);
-                                transition:
-                                    transform 0.3s ease,
-                                    box-shadow 0.3s ease;
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 cursor: pointer;
                             "
                             @mouseenter="
-                                $event.currentTarget.style.transform =
-                                    'scale(1.05)';
-                                $event.currentTarget.style.boxShadow =
-                                    '0 0 20px rgba(56, 189, 248, 0.3)';
+                                $event.currentTarget.style.transform = 'scale(1.05)';
+                                $event.currentTarget.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.3)';
                             "
                             @mouseleave="
-                                $event.currentTarget.style.transform =
-                                    'scale(1)';
+                                $event.currentTarget.style.transform = 'scale(1)';
                                 $event.currentTarget.style.boxShadow = 'none';
                             "
                         >
@@ -288,7 +254,7 @@
                         >
                             Skills & Qualities
                         </h3>
-
+                        
                         <!-- Badges Flex Container -->
                         <div class="flex flex-wrap gap-3">
                             <!-- Badge 1: Clean Code -->
@@ -299,27 +265,18 @@
                                     border: 1px solid rgba(56, 189, 248, 0.3);
                                     backdrop-filter: blur(10px);
                                     color: var(--color-accent);
-                                    transition:
-                                        transform 0.3s ease,
-                                        box-shadow 0.3s ease,
-                                        border-color 0.3s ease;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
                                     cursor: pointer;
                                 "
                                 @mouseenter="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1.08)';
-                                    $event.currentTarget.style.boxShadow =
-                                        '0 0 15px rgba(56, 189, 248, 0.4)';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.6)';
+                                    $event.currentTarget.style.transform = 'scale(1.08)';
+                                    $event.currentTarget.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.4)';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.6)';
                                 "
                                 @mouseleave="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1)';
-                                    $event.currentTarget.style.boxShadow =
-                                        'none';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.3)';
+                                    $event.currentTarget.style.transform = 'scale(1)';
+                                    $event.currentTarget.style.boxShadow = 'none';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)';
                                 "
                             >
                                 Clean Code
@@ -333,27 +290,18 @@
                                     border: 1px solid rgba(56, 189, 248, 0.3);
                                     backdrop-filter: blur(10px);
                                     color: var(--color-accent);
-                                    transition:
-                                        transform 0.3s ease,
-                                        box-shadow 0.3s ease,
-                                        border-color 0.3s ease;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
                                     cursor: pointer;
                                 "
                                 @mouseenter="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1.08)';
-                                    $event.currentTarget.style.boxShadow =
-                                        '0 0 15px rgba(56, 189, 248, 0.4)';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.6)';
+                                    $event.currentTarget.style.transform = 'scale(1.08)';
+                                    $event.currentTarget.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.4)';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.6)';
                                 "
                                 @mouseleave="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1)';
-                                    $event.currentTarget.style.boxShadow =
-                                        'none';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.3)';
+                                    $event.currentTarget.style.transform = 'scale(1)';
+                                    $event.currentTarget.style.boxShadow = 'none';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)';
                                 "
                             >
                                 Fast Loading
@@ -367,27 +315,18 @@
                                     border: 1px solid rgba(56, 189, 248, 0.3);
                                     backdrop-filter: blur(10px);
                                     color: var(--color-accent);
-                                    transition:
-                                        transform 0.3s ease,
-                                        box-shadow 0.3s ease,
-                                        border-color 0.3s ease;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
                                     cursor: pointer;
                                 "
                                 @mouseenter="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1.08)';
-                                    $event.currentTarget.style.boxShadow =
-                                        '0 0 15px rgba(56, 189, 248, 0.4)';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.6)';
+                                    $event.currentTarget.style.transform = 'scale(1.08)';
+                                    $event.currentTarget.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.4)';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.6)';
                                 "
                                 @mouseleave="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1)';
-                                    $event.currentTarget.style.boxShadow =
-                                        'none';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.3)';
+                                    $event.currentTarget.style.transform = 'scale(1)';
+                                    $event.currentTarget.style.boxShadow = 'none';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)';
                                 "
                             >
                                 SEO Friendly
@@ -401,27 +340,18 @@
                                     border: 1px solid rgba(56, 189, 248, 0.3);
                                     backdrop-filter: blur(10px);
                                     color: var(--color-accent);
-                                    transition:
-                                        transform 0.3s ease,
-                                        box-shadow 0.3s ease,
-                                        border-color 0.3s ease;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
                                     cursor: pointer;
                                 "
                                 @mouseenter="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1.08)';
-                                    $event.currentTarget.style.boxShadow =
-                                        '0 0 15px rgba(56, 189, 248, 0.4)';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.6)';
+                                    $event.currentTarget.style.transform = 'scale(1.08)';
+                                    $event.currentTarget.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.4)';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.6)';
                                 "
                                 @mouseleave="
-                                    $event.currentTarget.style.transform =
-                                        'scale(1)';
-                                    $event.currentTarget.style.boxShadow =
-                                        'none';
-                                    $event.currentTarget.style.borderColor =
-                                        'rgba(56, 189, 248, 0.3)';
+                                    $event.currentTarget.style.transform = 'scale(1)';
+                                    $event.currentTarget.style.boxShadow = 'none';
+                                    $event.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)';
                                 "
                             >
                                 Production Ready

@@ -34,7 +34,7 @@ import Button from "@/Components/UI/Button.vue";
                         #2563eb
                     );
                     background-size: 400% 400%;
-                    animation: gradientShift 10s ease infinite;
+                    animation: gradientShift 15s ease infinite;
                     opacity: 0.5;
                     filter: blur(100px);
                     z-index: 1;
@@ -228,53 +228,49 @@ import Button from "@/Components/UI/Button.vue";
                 </div>
 
                 <!-- Right Column: Profile Image with Hover Animation + Subtle Rotation -->
-                <div
-                    style="
-                        animation: slideInRight 400ms ease-out 160ms forwards;
-                        opacity: 0;
-                    "
-                >
-                    <div
-                        class="relative w-full aspect-square rounded-2xl overflow-hidden"
-                        style="
-                            background: var(--glass-background);
-                            border: var(--glass-border);
-                            box-shadow: var(--glass-shadow);
-                            max-width: 400px;
-                            margin: 0 auto;
-
-                            /* HOVER ANIMATION SETUP */
-                            transition:
-                                transform 0.3s ease,
-                                box-shadow 0.3s ease;
-                            cursor: pointer;
-                        "
-                        @mouseenter="
-                            $event.currentTarget.style.transform =
-                                'scale(1.05) rotate(5deg)';
-                            $event.currentTarget.style.boxShadow =
-                                '0 0 30px rgba(56, 189, 248, 0.5), var(--glass-shadow)';
-                        "
-                        @mouseleave="
-                            $event.currentTarget.style.transform =
-                                'scale(1) rotate(0deg)';
-                            $event.currentTarget.style.boxShadow =
-                                'var(--glass-shadow)';
-                        "
-                    >
-                        <!-- Profile Image -->
-                        <img
-                            src="/images/profile.jpeg"
-                            alt="Foto profil Ali"
-                            style="
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                                display: block;
-                            "
-                        />
-                    </div>
-                </div>
+<div
+    style="
+        animation: slideInRight 400ms ease-out 160ms forwards;
+        opacity: 0;
+    "
+>
+    <div
+        class="relative w-full aspect-square rounded-2xl overflow-hidden"
+        style="
+            background: var(--glass-background);
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            max-width: 400px;
+            margin: 0 auto;
+            
+            /* HOVER ANIMATION SETUP */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        "
+        
+        @mouseenter="
+            $event.currentTarget.style.transform = 'scale(1.05) rotate(15deg)';
+            $event.currentTarget.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.5), var(--glass-shadow)';
+        "
+        
+        @mouseleave="
+            $event.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+            $event.currentTarget.style.boxShadow = 'var(--glass-shadow)';
+        "
+    >
+        <!-- Profile Image -->
+        <img
+            src="/images/profile.jpeg"
+            alt="Foto profil Ali"
+            style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            "
+        />
+    </div>
+</div>
             </div>
         </div>
 

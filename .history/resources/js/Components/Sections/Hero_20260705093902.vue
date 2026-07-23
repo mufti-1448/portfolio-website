@@ -36,7 +36,7 @@ import Button from "@/Components/UI/Button.vue";
                     background-size: 400% 400%;
                     animation: gradientShift 10s ease infinite;
                     opacity: 0.5;
-                    filter: blur(100px);
+                    filter: blur(1px);
                     z-index: 1;
                 "
             ></div>

@@ -1,5 +1,6 @@
 @import './variables.css';
-
+// resources/js/app.js
+import '../css/animations.css'
 
 @tailwind base;
 @tailwind components;

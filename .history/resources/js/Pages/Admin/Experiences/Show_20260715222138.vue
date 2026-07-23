@@ -67,7 +67,7 @@ defineProps({
                         style="color: var(--color-text-primary)"
                     >
                         Information
-                    </h3> 
+                    </h3>
                     <div class="space-y-4">
                         <div class="flex justify-between">
                             <span style="color: var(--color-text-secondary)"

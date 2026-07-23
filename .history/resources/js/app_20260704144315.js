@@ -48,7 +48,6 @@ library.add(
     faHome,
     faCode,
     faBriefcase,
-    faDotCircle,
     faCertificate,
     faBuildingUser,
     faEnvelope,

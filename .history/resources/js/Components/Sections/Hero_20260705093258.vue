@@ -34,7 +34,7 @@ import Button from "@/Components/UI/Button.vue";
                         #2563eb
                     );
                     background-size: 400% 400%;
-                    animation: gradientShift 10s ease infinite;
+                    animation: gradientShift 15s ease infinite;
                     opacity: 0.5;
                     filter: blur(100px);
                     z-index: 1;
@@ -227,53 +227,42 @@ import Button from "@/Components/UI/Button.vue";
                     </div>
                 </div>
 
-                <!-- Right Column: Profile Image with Hover Animation + Subtle Rotation -->
                 <div
+                    class="relative w-full aspect-square rounded-2xl overflow-hidden"
                     style="
-                        animation: slideInRight 400ms ease-out 160ms forwards;
-                        opacity: 0;
+                        background: var(--glass-background);
+                        border: var(--glass-border);
+                        box-shadow: var(--glass-shadow);
+                        max-width: 400px;
+                        margin: 0 auto;
+                        transition:
+                            border-color 0.3s ease,
+                            box-shadow 0.3s ease;
+                        cursor: pointer;
+                    "
+                    @mouseenter="
+                        $event.currentTarget.style.borderColor =
+                            'rgba(56, 189, 248, 0.8)';
+                        $event.currentTarget.style.boxShadow =
+                            '0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.1)';
+                    "
+                    @mouseleave="
+                        $event.currentTarget.style.borderColor =
+                            'var(--glass-border)';
+                        $event.currentTarget.style.boxShadow =
+                            'var(--glass-shadow)';
                     "
                 >
-                    <div
-                        class="relative w-full aspect-square rounded-2xl overflow-hidden"
+                    <img
+                        src="/images/profile.jpeg"
+                        alt="Foto profil Ali"
                         style="
-                            background: var(--glass-background);
-                            border: var(--glass-border);
-                            box-shadow: var(--glass-shadow);
-                            max-width: 400px;
-                            margin: 0 auto;
-
-                            /* HOVER ANIMATION SETUP */
-                            transition:
-                                transform 0.3s ease,
-                                box-shadow 0.3s ease;
-                            cursor: pointer;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            display: block;
                         "
-                        @mouseenter="
-                            $event.currentTarget.style.transform =
-                                'scale(1.05) rotate(5deg)';
-                            $event.currentTarget.style.boxShadow =
-                                '0 0 30px rgba(56, 189, 248, 0.5), var(--glass-shadow)';
-                        "
-                        @mouseleave="
-                            $event.currentTarget.style.transform =
-                                'scale(1) rotate(0deg)';
-                            $event.currentTarget.style.boxShadow =
-                                'var(--glass-shadow)';
-                        "
-                    >
-                        <!-- Profile Image -->
-                        <img
-                            src="/images/profile.jpeg"
-                            alt="Foto profil Ali"
-                            style="
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                                display: block;
-                            "
-                        />
-                    </div>
+                    />
                 </div>
             </div>
         </div>

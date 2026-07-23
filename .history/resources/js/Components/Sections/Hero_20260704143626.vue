@@ -1,8 +1,10 @@
 <script setup>
+//KODE SEKARANG
 import Button from "@/Components/UI/Button.vue";
 </script>
 
 <template>
+    <!-- TEMPLATE SEKARANG -->
     <!-- Hero Section -->
     <section
         id="home"
@@ -34,7 +36,7 @@ import Button from "@/Components/UI/Button.vue";
                         #2563eb
                     );
                     background-size: 400% 400%;
-                    animation: gradientShift 10s ease infinite;
+                    animation: gradientShift 15s ease infinite;
                     opacity: 0.5;
                     filter: blur(100px);
                     z-index: 1;
@@ -117,7 +119,9 @@ import Button from "@/Components/UI/Button.vue";
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Left Column: Text Content -->
                 <div>
-                    <!-- NEW BADGE COMPONENT (Option 3 - Premium) -->
+                    <!-- ========================================
+     NEW BADGE COMPONENT (Option 3 - Premium)
+     ======================================== -->
                     <div
                         class="mb-8 inline-flex items-center gap-3 px-4 py-2 rounded-lg"
                         style="
@@ -227,7 +231,9 @@ import Button from "@/Components/UI/Button.vue";
                     </div>
                 </div>
 
-                <!-- Right Column: Profile Image with Hover Animation + Subtle Rotation -->
+                <!-- ========================================
+     RIGHT COLUMN: Profile Image (CLEAN)
+     ======================================== -->
                 <div
                     style="
                         animation: slideInRight 400ms ease-out 160ms forwards;
@@ -242,24 +248,6 @@ import Button from "@/Components/UI/Button.vue";
                             box-shadow: var(--glass-shadow);
                             max-width: 400px;
                             margin: 0 auto;
-
-                            /* HOVER ANIMATION SETUP */
-                            transition:
-                                transform 0.3s ease,
-                                box-shadow 0.3s ease;
-                            cursor: pointer;
-                        "
-                        @mouseenter="
-                            $event.currentTarget.style.transform =
-                                'scale(1.05) rotate(5deg)';
-                            $event.currentTarget.style.boxShadow =
-                                '0 0 30px rgba(56, 189, 248, 0.5), var(--glass-shadow)';
-                        "
-                        @mouseleave="
-                            $event.currentTarget.style.transform =
-                                'scale(1) rotate(0deg)';
-                            $event.currentTarget.style.boxShadow =
-                                'var(--glass-shadow)';
                         "
                     >
                         <!-- Profile Image -->
@@ -273,6 +261,7 @@ import Button from "@/Components/UI/Button.vue";
                                 display: block;
                             "
                         />
+                        <!-- Tech Stack Badges - REMOVED ✓ -->
                     </div>
                 </div>
             </div>
@@ -308,9 +297,82 @@ import Button from "@/Components/UI/Button.vue";
 </template>
 
 <style scoped>
-/* ========================================
-   UTILITY CLASSES: Layout & Typography
-   ======================================== */
+
+
+
+/* STYLE SEKARANG */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floating {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
 
 .min-h-screen {
     min-height: 100vh;
@@ -445,20 +507,12 @@ import Button from "@/Components/UI/Button.vue";
     gap: 1rem;
 }
 
-.gap-3 {
-    gap: 0.75rem;
-}
-
 .aspect-square {
     aspect-ratio: 1 / 1;
 }
 
 .rounded-2xl {
     border-radius: 1rem;
-}
-
-.rounded-lg {
-    border-radius: 0.5rem;
 }
 
 .w-full {
@@ -501,14 +555,6 @@ import Button from "@/Components/UI/Button.vue";
     display: inline-block;
 }
 
-.inline-flex {
-    display: inline-flex;
-}
-
-/* ========================================
-   RESPONSIVE: Mobile Optimization
-   ======================================== */
-
 @media (max-width: 768px) {
     .md\:grid-cols-2 {
         grid-template-columns: 1fr;
@@ -524,123 +570,6 @@ import Button from "@/Components/UI/Button.vue";
 
     .gap-12 {
         gap: 2rem;
-    }
-}
-</style>
-
-<!-- GLOBAL KEYFRAMES - TIDAK scoped, accessible dari inline styles -->
-<style>
-/**
- * IMPORTANT NOTE:
- * Keyframes di-define di <style> GLOBAL (tanpa scoped attribute)
- * agar dapat di-akses dari inline style attributes di template.
- * 
- * Alasan:
- * - Vue scoped CSS menambahkan attribute selector ke setiap rule
- * - Keyframes tidak bisa di-scope dengan attribute selector
- * - Hasil: Keyframes defined di <style scoped> tidak accessible dari inline styles
- * 
- * Solusi: Pisahkan keyframes ke <style> global (ini file)
- * Dan keep utility classes di <style scoped> untuk organization yang lebih baik
- */
-
-@keyframes badgeGlow {
-    0% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-        border-color: rgba(56, 189, 248, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 10px 3px rgba(56, 189, 248, 0.2);
-        border-color: rgba(56, 189, 248, 0.4);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-        border-color: rgba(56, 189, 248, 0.2);
-    }
-}
-
-@keyframes dotPulse {
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.1);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes floating {
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes bounce {
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(10px);
-    }
-}
-
-@keyframes pulse {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
     }
 }
 </style>

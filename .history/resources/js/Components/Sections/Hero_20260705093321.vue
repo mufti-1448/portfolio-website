@@ -34,7 +34,7 @@ import Button from "@/Components/UI/Button.vue";
                         #2563eb
                     );
                     background-size: 400% 400%;
-                    animation: gradientShift 10s ease infinite;
+                    animation: gradientShift 15s ease infinite;
                     opacity: 0.5;
                     filter: blur(100px);
                     z-index: 1;
@@ -227,7 +227,6 @@ import Button from "@/Components/UI/Button.vue";
                     </div>
                 </div>
 
-                <!-- Right Column: Profile Image with Hover Animation + Subtle Rotation -->
                 <div
                     style="
                         animation: slideInRight 400ms ease-out 160ms forwards;
@@ -242,8 +241,6 @@ import Button from "@/Components/UI/Button.vue";
                             box-shadow: var(--glass-shadow);
                             max-width: 400px;
                             margin: 0 auto;
-
-                            /* HOVER ANIMATION SETUP */
                             transition:
                                 transform 0.3s ease,
                                 box-shadow 0.3s ease;
@@ -251,18 +248,17 @@ import Button from "@/Components/UI/Button.vue";
                         "
                         @mouseenter="
                             $event.currentTarget.style.transform =
-                                'scale(1.05) rotate(5deg)';
+                                'perspective(1000px) rotateY(3deg) rotateX(-2deg) scale(1.02)';
                             $event.currentTarget.style.boxShadow =
                                 '0 0 30px rgba(56, 189, 248, 0.5), var(--glass-shadow)';
                         "
                         @mouseleave="
                             $event.currentTarget.style.transform =
-                                'scale(1) rotate(0deg)';
+                                'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
                             $event.currentTarget.style.boxShadow =
                                 'var(--glass-shadow)';
                         "
                     >
-                        <!-- Profile Image -->
                         <img
                             src="/images/profile.jpeg"
                             alt="Foto profil Ali"
